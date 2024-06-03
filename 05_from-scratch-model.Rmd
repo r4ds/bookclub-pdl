@@ -1,4 +1,4 @@
-# {{{chapter_title}}}
+# From-scratch model
 
 **Learning objectives:**
 
