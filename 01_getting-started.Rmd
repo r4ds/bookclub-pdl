@@ -2,16 +2,111 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- What do I need to get started?
+- Motivating examples
+- Big picture deep learning with fastai
 
-## SLIDE 1 {-}
+## Tools and Resources{-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+- python
+- pytorch
+- fastai: built on pytorch
+- jupyter notebook
+- cloud servers
+- Meta Learning book
+- Deep Learning for Coders book (materials in videos presented differently)
+
+## Prerequisites {-}
+
+This course doesn't teach python.
+
+**What you don't need to do deep learning**
+
+Myth (don't need) | Truth
+------------------| ------------------------------
+Lots of math | Just high school math is sufficient
+Lots of data | We've seen record-breaking results with <50 items of data
+Lots of expensive computers | You can get what you need for state of the art work for free
+
+## Is it a bird system? {-}
+
+- reminder: images are numbers!
+- What can be an image? sounds, time series, trajectory data
+- introduce python workflow for getting images from duckduckgo
+- `DataBlock()` for setting up data for CV models
+- runs a CNN live while streaming on 400 images
+
+## Where is deep learning? {-}
+
+- course occurred ~ 2 years ago (July 2022)
+- dall-e: text to images
+- midjourney: text to images
+- deep learning + art
+- Google Pathways language model: answers questions w/ explanations
+
+- ethics.fast.ai: another course
+
+## Deep Learning {-}
+
+- With a NN, we don't hand code features, but it learns them through examples
+- Deep learning composes these features
+- In general, the deeper features are more specialized/localized
+
+## Jupyter and the cloud {-}
+
+- literate programming: interweaves code cells and markdown cells
+- colab
+- kaggle: tutorial and course code available
+- course instructor claims to use a lot of functional style
+
+## DataBlock() {-}
+
+- getting data to model is most important data science task
+- most existing model architectures work well across systems
+- main arguments:
+    + what type of input?
+    + what type of output?
+    + where is the training data?
+    + how should the data be split? (validation set is a requirement)
+    + where is the training output?
+    + how should the training items be transformed?
+- then use a learner to pair the data with the model type
+- intermediate, flexible approach
+- specialized functions for common data structures
+
+## Pretrained models {-}
+
+- fastai is *fast* because it uses pretrained models
+- pretrained: don't start with a random network, but with weights from a model previously trained on a different dataset
+- used in image models
+
+## Types of problems where DL is state-of-art {-}
+
+- computer vision: identify what's in an image
+- segmentation: combine pixels that correspond to one object/item/etc
+- tabular analysis: regression/classification
+- collaborative filtering - recommendation systems
+- NLP
+- Robotics
+- Playing games
+- Medicine/biology applications
+
+## When does DL win? {-}
+
+Is it something a (expert) human can do quickly? 
+
+Does it take a logical thought process based on sparse data?
+
+A trained model is just something that maps inputs to results like another computer program, but getting to the end model takes some tricks.
+
+## Course Video HW {-}
+
+- Experiment with week 1 lab
+- Read book chapter
 
 ## Meeting Videos {-}
 
-### Cohort 1 {-}
+### Cohort 1 {-} 
 
 `r knitr::include_url("https://www.youtube.com/embed/URL")`
 
