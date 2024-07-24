@@ -2,12 +2,149 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Build a tabular model from "scratch"
 
-## SLIDE 1 {-}
+## Getting Started {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+- Titanic data from kaggle
+- clean notebook from github
+- Jeremy uses paperspace, I uploaded to kaggle in the titanic competition
+
+```{r, message=FALSE}
+library(tidyverse)
+
+df <- read_csv("titanic/train.csv")
+
+df |> 
+  is.na() |> 
+  colSums()
+## only matches with default of read_csv 
+```
+
+
+## Cleaning the data {-}
+
+- Impute missing values with mode
+- Discussion on imputation 
+    + good enough for baseline method
+    + better than throwing away data
+    + Jeremy "doesn't throw out rows and doesn't throw out columns"
+    
+```{r}
+df <- df |> 
+  replace_na(map(df, \(x) 
+                 ifelse(is.numeric(x),
+                        median(x, na.rm = TRUE),
+                        table(x) |> which.max() |> names())))
+
+df |> 
+  is.na() |> 
+  colSums()
+
+summary(df)
+```
+    
+    
+- skewed data not easily handled by regression, suggest log transform
+
+```{r}
+hist(df$Fare)
+
+df$LogFare <- log(df$Fare + 1)
+
+hist(df$LogFare)
+```
+
+
+- dummy variables for categorical variables; fastai creates an other which allows for new levels to show up in testing data
+
+```{r, message = FALSE}
+unique(df$Pclass) |> sort()
+unique(df$Embarked) |> sort()
+
+df <- df |> 
+  fastDummies::dummy_cols(select_columns = c("Sex", "Pclass", "Embarked"))
+
+head(df)
+```
+
+```{r}
+t_dep <- df$Survived
+
+t_indep <- df |> 
+  select(Age, SibSp, Parch, LogFare, Sex_female:Embarked_S) |> 
+  as.matrix()
+
+head(t_indep)
+dim(t_indep)
+```
+
+
+## Setting up linear model {-}
+
+- initialize coefficients with seed
+
+```{r}
+set.seed(442)
+n_coeff <- ncol(t_indep)
+coeffs <- runif(n_coeff) - 0.5
+```
+
+- broadcasting in numpy (and R): more concise, readable, optimized. I think it is more strict in python than R
+
+```{r}
+(t(t_indep)*coeffs) |> 
+  t() |> 
+  head()
+```
+
+- normalize columns: two most common ways is dividing by the maximum or subtract mean divide by standard deviation
+
+```{r}
+t_indep <- t(t(t_indep)/apply(t_indep,2,max))
+
+(t(t_indep)*coeffs) |> 
+  t() |> 
+  head()
+```
+
+- decide on a loss function
+
+```{r}
+preds <- t_indep%*%coeffs 
+
+loss <- abs(preds - t_dep) |> 
+  mean()
+loss
+```
+
+- save useful functions for repition
+
+```{r}
+
+calc_preds <- function(coeffs, indeps){
+  indeps%*%coeffs
+}
+
+calc_loss<- function(coeffs, indeps, deps){
+  abs(calc_preds(coeffs, indeps) - deps) |> 
+  mean()
+}
+
+```
+
+## Training the linear model {-}
+
+- First, set up the gradient descent step
+- Create validation split
+- Using sigmoid for binary independent variables on final activation
+- Let's experiment with the deep learning code section as suggested 
+
+## Jeremy's opinions {-}
+
+- Generally for tabular data, feature engineering requires more thinking than using image data
+- Start lazy
+- use a framework
 
 ## Meeting Videos {-}
 
