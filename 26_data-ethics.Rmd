@@ -1,0 +1,117 @@
+# Data Ethics
+
+**Learning objectives:**
+
+- Define ethics
+- Provide examples of major themes in ML breaches of ethics
+- Discuss mitigation strategies
+
+## Ethics {-}
+
+- "study of right and wrong"
+    + How do we define those terms?
+    + How do we recognize those actions?
+    + How do the consequences of those actions show up?
+- In the (philosophical) field, there is no consensus
+- Best accomplished in a diverse team
+
+## Prompts Going Forward {-}
+
+- What could you have done in the situation?
+- What kind of obstructions might have prevented you from getting that done?
+- How would you deal with the obstructions?
+- What would you look out for?
+
+## Recourse and Accountability {-}
+
+- We need mechanisms for audits and error correction
+- We need to take responsibility for learning the plan of implementation
+
+Examples:
+
+- Healthcare algorithm implemented in Arkansas
+    + People received benefit cuts with no explanation
+         + especially those impacted by diabetes and cerebral palsy
+    + Court case revealed software was buggy
+
+- Babies in gang members database
+
+- US credit report system
+
+## Feedback Loops {-}
+
+- Model controls future data collection design
+    + reinforcement learning
+- Predictions can reinforce actions taken in the real world
+
+Examples: 
+
+- Youtube recommendation algorithm lead to a rise in conspiracy theory
+- Youtube recommendation algorithm lead to curated pedophile playlists
+- Russia Today gaming the Youtube algorithm
+- Positive: Meetup doesn't use gender in recommendation algorithm
+- Facebook also recommends members of a radical group to join more
+
+## Bias {-}
+
+- Types of bias:
+    + historical bias
+    + measurement bias
+    + aggregation bias
+    + representation bias
+
+Examples:
+
+- Google search: "historically Black names received advertisements suggesting that the person had a criminal record, whereas, white names had more neutral advertisements"
+
+## Historical bias {-}
+
+- people, processes, and society are biased
+- Lots of examples of racial bias
+- bias in society can lead to systematic bias in datasets (i.e., we don't measure people we are biased against)
+- fixing problems in ML because input data has problems is **hard**
+- bias in the workforce can reinforce
+
+## Other biases {-}
+
+Measurement bias: stroke prediction - data collected on people who use medical care  
+
+Aggregation bias: models aggreate in a way that doesn't incorporate all of the appropriate factors, interaction terms, nonlinearities (Simpson's paradox?)  
+
+Representation bias: model amplifies a simple relationship (i.e., occupation and gender)
+
+- More data isn't a panacea
+- Better data descriptions, contexts, and decisions
+
+## Why does this matter? {-}
+
+- Extreme case: IBM and Nazi Germany
+    + IBM provided data tabulation products necessary to track people on massive scale in camps
+    + Had a category for method of murder
+    + CEO Watson was meeting with Hitler, but lower level employees building the products were not necessarily aware
+    
+- How would you feel? Would you want to know?
+- Ask questions; if not satisfied with the answers, say "no"
+- Algorithms and humans are not interchangeable
+
+## Identifying and Addressing Ethical Issues {-}
+
+Few steps we can do:
+- Analyze a project you are working on
+- Implement processes at your company to find and address ethical risks
+- Support good policy
+- Increase diversity
+
+## Meeting Videos {-}
+
+### Cohort 1 {-}
+
+`r knitr::include_url("https://www.youtube.com/embed/URL")`
+
+<details>
+<summary> Meeting chat log </summary>
+
+```
+LOG
+```
+</details>
