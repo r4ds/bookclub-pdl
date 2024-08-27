@@ -62,6 +62,12 @@ hist(df$LogFare)
 unique(df$Pclass) |> sort()
 unique(df$Embarked) |> sort()
 
+df |> 
+  select(Sex, Pclass, Embarked) |>
+  mutate(Pclass = as.character(Pclass)) |> 
+  model.matrix(object = ~.-1) |> 
+  head()
+
 df <- df |> 
   fastDummies::dummy_cols(select_columns = c("Sex", "Pclass", "Embarked"))
 
@@ -118,7 +124,7 @@ loss <- abs(preds - t_dep) |>
 loss
 ```
 
-- save useful functions for repition
+- save useful functions for repetition
 
 ```{r}
 
