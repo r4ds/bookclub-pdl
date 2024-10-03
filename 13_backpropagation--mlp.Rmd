@@ -2,12 +2,122 @@
 
 **Learning objectives:**
 
-- THESE ARE NICE TO HAVE BUT NOT ABSOLUTELY NECESSARY
+- Linear Models and ReLU
+- Multi Layer Perceptron (MLP) from scratch
 
-## SLIDE 1 {-}
+## Linear Models and ReLU {-}
 
-- ADD SLIDES AS SECTIONS (`##`).
-- TRY TO KEEP THEM RELATIVELY SLIDE-LIKE; THESE ARE NOTES, NOT THE BOOK ITSELF.
+```{r}
+library(tidyverse)
+theme_set(theme_bw())
+
+x <- seq(-2, 2, by = 0.01) + 1
+y <- x
+
+gg_line <- ggplot() +
+  geom_line(aes(x = x, y = y)) +
+  ggtitle("Example linear model for y given x")
+gg_line
+```
+
+Using only lines we want to draw a curve like the following:
+
+```{r}
+gg_line +
+  geom_line(aes(x = x, y = (-(x-1)^2+2)), col = "blue")
+```
+
+- Can't add a bunch of lines because we will just get a line back
+
+## Linear Models and ReLU {-}
+
+What if we create piecewise lines like:
+
+```{r}
+gg_line +
+  geom_line(aes(x = x, y = -0.5*ifelse(x>0, x, 0) - 1), col = "red")
+```
+
+Then add them together to get:
+
+```{r}
+re_lu1 <- x - 0.5*ifelse(x>0, x, 0) - 1
+
+ggplot() +
+  geom_line(aes(x = x, y = re_lu1)) +
+  ggtitle("Example linear model for y given x")
+```
+
+Again:
+
+
+```{r}
+gg_line +
+  geom_line(aes(x = x, y = -0.5*ifelse(x>0, x, 0) - 1), col = "red")+
+  geom_line(aes(x = x, y = -0.5*ifelse(x-1>0, x-1, 0) - 1), col = "blue")
+```
+
+```{r}
+re_lu2 <- x - 0.5*ifelse(x-1>0, x-1, 0) - 1
+
+ggplot() +
+  geom_line(aes(x = x, y = re_lu1), col = "red") +
+  geom_line(aes(x = x, y = re_lu2), col = "blue") +
+  ggtitle("Example linear model for y given x")
+```
+
+## Multi Layer Perceptron (MLP) from scratch {-}
+
+Go to notebook
+
+## Loss function from scratch - Mean Squared Error (MSE) {-}
+
+Go to notebook; show screenshot
+
+## Gradients and backpropagation diagram {-}
+
+Reminders about SGD:
+
+- move parameters (weights and biases) in (neg.) direction of gradients
+- gradient matrix for every change in input what's the change in output (possibly more than 1)
+
+## Matrix calculus resources {-}
+
+[Matrix Calculus for Deep Learning](https://explained.ai/matrix-calculus/)
+
+## Gradients and backpropagation code {-}
+
+Go to notebook
+
+## Chain rule visualized + how it applies {-}
+
+[The Intuitive Notion of the Chain Rule](https://webspace.ship.edu/msrenault/geogebracalculus/derivative_intuitive_chain_rule.html)
+
+Go through chain rule for $3x^2 + 9$?
+
+## Using Python’s built in debugger {-}
+
+- Add line to lin-grad
+- press h for help
+- explore shape of objects
+- einsum demo to make change:
+
+```python
+w.g = (inp.unsqueeze(-1) * out.g.unsqueeze(1)).sum(0)
+w.g = inp.T@out.g
+```
+
+## Refactoring the code {-}
+
+- create a class for the functions
+- __call__ : advantage to use it like a function, but instead is an instance of the class
+
+## Minibatch Training {-}
+
+- refresh on cross entropy with Excel file
+- tricks with indexing vs one-hot-encoding
+- refresh on log and exponent rules
+- safe logsumexp by subtracting max
 
 ## Meeting Videos {-}
 
