@@ -11,7 +11,7 @@ As we read, we are producing [notes about the book](https://dslc.io/pdl).
 
 If you would like to present, please see the sign-up sheet for your cohort (linked below, and pinned in the [#book_club-pdl](https://dslcio.slack.com/archives/C05TLA9C9AA) channel on Slack)!
 
-- [Cohort 1](https://docs.google.com/spreadsheets/d/1zz4JWHtdqcBiA70G8GL4sUGDOF4BnOn0kZ-5E9yr6X4/edit?usp=sharing) (started 2024-06-12, facilitated by Toryn Schafer): [Wednesdays, 5:00 PM CST/CDT](https://www.timeanddate.com/worldclock/converter.html?iso=20240612T220000&p1=24&p2=1440) | [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGgEOjZduDTTXxDFWmYaLWIk)
+- Cohort 1 (started 2024-06-12, ended 2025-02-06): [meeting videos](https://www.youtube.com/playlist?list=PL3x6DOfs2NGgEOjZduDTTXxDFWmYaLWIk)
 
 <hr>
 
